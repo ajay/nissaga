@@ -79,10 +79,10 @@ class Person(BaseModel):
 
     class Config:
         extra = Extra.forbid
-        fields = dict(
-            from_ = 'from',
-            class_ = 'class',
-        )
+        # fields = dict(
+        #     from_ = 'from',
+        #     class_ = 'class',
+        # )
 
 # You can reference persons by its id but you can also
 # define them inline with a single item dict.
