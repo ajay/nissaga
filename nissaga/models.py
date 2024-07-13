@@ -191,12 +191,17 @@ def schema_json():
 def schema_yaml():
     return ns(Nissaga.schema()).dump()
 
-def draw(yamlfile, formats):
+def draw(yamlfile, formats, outdir: Optional[Path] = None):
 
     step(f"Loading {yamlfile}...")
     p = Nissaga.load(yamlfile)
 
-    dotfile = yamlfile.with_suffix('.dot')
+    if outdir:
+        outdir.mkdir(parents=True, exist_ok=True)
+
+    output_stem = (outdir / yamlfile.stem) if outdir else yamlfile
+
+    dotfile = output_stem.with_suffix('.dot')
 
     dot = render(p)
     Path(dotfile).write_text(dot, encoding='utf8')
@@ -204,7 +209,7 @@ def draw(yamlfile, formats):
     gv = graphviz.Source(dot)
     for format in formats:
         if format == 'dot': continue
-        outputfile = yamlfile.with_suffix('.'+format)
+        outputfile = output_stem.with_suffix('.'+format)
         step("Generating {}...", outputfile)
         try:
             temp = gv.render(dotfile, format=format, view=False)
