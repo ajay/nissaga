@@ -191,7 +191,7 @@ def schema_json():
 def schema_yaml():
     return ns(Nissaga.schema()).dump()
 
-def draw(yamlfile, formats, outdir: Optional[Path] = None):
+def draw(yamlfile, formats, outname: Optional[str] = None, outdir: Optional[Path] = None):
 
     step(f"Loading {yamlfile}...")
     p = Nissaga.load(yamlfile)
@@ -199,7 +199,7 @@ def draw(yamlfile, formats, outdir: Optional[Path] = None):
     if outdir:
         outdir.mkdir(parents=True, exist_ok=True)
 
-    output_stem = (outdir / yamlfile.stem) if outdir else yamlfile
+    output_stem = (outdir / (outname if outname else yamlfile.stem)) if outdir else yamlfile
 
     dotfile = output_stem.with_suffix('.dot')
 
