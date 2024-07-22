@@ -42,7 +42,7 @@ class Person(BaseModel):
         "Just for the record, not shown. "
         "Sometimes is the only information available in gravestones."
     ))
-    from_: Optional[str] = Field(None, description=(
+    from_: Optional[str] = Field(None, alias = "from", description=(
         "Place of origin. "
         "Just for the record, not shown."
     ))
@@ -72,7 +72,7 @@ class Person(BaseModel):
     gender: Optional[str] = Field(None, description=(
         "Not used yet."
     ))
-    class_: Optional[List[str]] = Field([], description=(
+    class_: Optional[List[str]] = Field([], alias = "class", description=(
         "Space separated style classes for the person. "
         "Specific attributes can be specified for the persons having a given class."
     ))
