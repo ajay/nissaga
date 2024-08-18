@@ -221,7 +221,7 @@ def renderPerson(root, person, path):
       '<table align="center" border="0" cellpadding="0" cellspacing="1">',
       '<tr>',
       (
-          f'<td rowspan="3" width="{picsize[0]}" height="{picsize[1]}" fixedsize="true"><img src="pics/{pic}" scale="TRUE"></img></td>'
+          f'<td rowspan="3" width="{picsize[0]}" height="{picsize[1]}" fixedsize="true"><img src="{pic}" scale="TRUE"></img></td>'
           if pic else
           f'<td rowspan="3" width="{picsize[0]}" height="{picsize[1]}" fixedsize="true" bgcolor="#eeeeee"></td>'
       ),
