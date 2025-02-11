@@ -216,7 +216,7 @@ def renderPerson(root, person, path):
 
     name = person and person.fullname or person.name or id
     surname, firstname = ([' ']+name.split(','))[-2:]
-    picsize = 40, 40 # TODO: configurable
+    picsize = 50, 50 # TODO: configurable
     label = "\n".join([
       '<table align="center" border="0" cellpadding="0" cellspacing="1">',
       '<tr>',
